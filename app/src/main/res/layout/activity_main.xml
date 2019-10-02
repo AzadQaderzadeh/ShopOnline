@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFBFB"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <LinearLayout
+                android:id="@+id/linearShowAllProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="#144E15"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="مشاهده لیست دستە بندی محصولات"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/menu" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:layout_marginLeft="16dp"
+                        android:layout_weight="0.5"
+                        android:orientation="horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="22sp"
+                            android:id="@+id/txt_hour"
+                            android:text="12"
+                            android:background="#454444"
+                            android:padding="8dp"
+                            android:textColor="#ffffff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textSize="22sp"
+                            android:text=":"
+                            android:layout_marginRight="2dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textSize="22sp"
+                            android:id="@+id/txt_min"
+                            android:text="54"
+                            android:background="#454444"
+                            android:padding="8dp"
+                            android:textColor="#ffffff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textSize="22sp"
+                            android:text=":"
+                            android:layout_marginRight="2dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textSize="22sp"
+                            android:id="@+id/txt_second"
+                            android:text="07"
+                            android:background="#454444"
+                            android:padding="8dp"
+                            android:textColor="#ffffff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="right"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="0.5"
+                        android:orientation="horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="شگفت انگیز"
+                            android:layout_marginRight="4dp"
+                            android:textColor="#FF0C00"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="پیشنهاد"
+                            android:textColor="#2C2B2B"
+                            android:textSize="22sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_marginTop="16dp"
+                android:layout_width="2000dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:src="@drawable/menu"
+                                android:layout_marginBottom="16dp"
+                                android:layout_width="150dp"
+                                android:layout_height="170dp"/>
+                            <TextView
+                                android:text="iPhone 11 Pro 2019"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:background="#807f7f"
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"/>
+                            <TextView
+                                android:text="24000"
+                                android:textColor="#186F1B"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="28000"
+                                android:textColor="#FA0F00"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:src="@drawable/menu"
+                                android:layout_marginBottom="16dp"
+                                android:layout_width="150dp"
+                                android:layout_height="170dp"/>
+                            <TextView
+                                android:text="iPhone 11 Pro 2019"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:background="#807f7f"
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"/>
+                            <TextView
+                                android:text="24000"
+                                android:textColor="#186F1B"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="28000"
+                                android:textColor="#FA0F00"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:src="@drawable/menu"
+                                android:layout_marginBottom="16dp"
+                                android:layout_width="150dp"
+                                android:layout_height="170dp"/>
+                            <TextView
+                                android:text="iPhone 11 Pro 2019"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:background="#807f7f"
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"/>
+                            <TextView
+                                android:text="24000"
+                                android:textColor="#186F1B"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="28000"
+                                android:textColor="#FA0F00"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:src="@drawable/menu"
+                                android:layout_marginBottom="16dp"
+                                android:layout_width="150dp"
+                                android:layout_height="170dp"/>
+                            <TextView
+                                android:text="iPhone 11 Pro 2019"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:background="#807f7f"
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"/>
+                            <TextView
+                                android:text="24000"
+                                android:textColor="#186F1B"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="28000"
+                                android:textColor="#FA0F00"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:src="@drawable/menu"
+                                android:layout_marginBottom="16dp"
+                                android:layout_width="150dp"
+                                android:layout_height="170dp"/>
+                            <TextView
+                                android:text="iPhone 11 Pro 2019"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:background="#807f7f"
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"/>
+                            <TextView
+                                android:text="24000"
+                                android:textColor="#186F1B"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="28000"
+                                android:textColor="#FA0F00"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:src="@drawable/menu"
+                                android:layout_marginBottom="16dp"
+                                android:layout_width="150dp"
+                                android:layout_height="170dp"/>
+                            <TextView
+                                android:text="iPhone 11 Pro 2019"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:background="#807f7f"
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"/>
+                            <TextView
+                                android:text="24000"
+                                android:textColor="#186F1B"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="28000"
+                                android:textColor="#FA0F00"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </LinearLayout>
+
+
+
+            </HorizontalScrollView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
