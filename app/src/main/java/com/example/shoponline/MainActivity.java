@@ -1,11 +1,17 @@
 package com.example.shoponline;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -20,14 +26,38 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
     private SliderLayout sliderShow;
     private ArrayList<String> urlPict;
     private ArrayList<String> name;
+    private String drawerMenuList;
+    private ListView navigation_listView;
+    private ImageView menu_app;
+    private DrawerLayout drawerLayout;
+
+  //  private String [] menues = {"منو","ثبت نام","سبد خرید"};
+    ArrayList<BuyMenuListItem> items ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.drawer_menu);
 
         sliderShow = findViewById(R.id.slider);
         linearShowAllProduct = findViewById(R.id.linearShowAllProduct);
+        menu_app = findViewById(R.id.menu_app);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigation_listView = findViewById(R.id.navigation_listView);
+
+        items = new ArrayList<>();
+        items.add(new BuyMenuListItem(R.drawable.basket,"خانه"));
+        items.add(new BuyMenuListItem(R.drawable.search,"منو"));
+
+        navigation_listView.setAdapter(new BuyMenuAdapter(MainActivity.this,R.layout.buy_menu_list,items));
+        menu_app.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.RIGHT);
+            }
+        });
 
         urlPict = new ArrayList<>();
         name = new ArrayList<>();
