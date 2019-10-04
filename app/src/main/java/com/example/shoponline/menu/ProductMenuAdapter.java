@@ -1,7 +1,6 @@
-package com.example.shoponline;
+package com.example.shoponline.menu;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,17 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.shoponline.R;
 
-public class BuyMenuAdapter extends ArrayAdapter {
+import java.util.ArrayList;
+
+public class ProductMenuAdapter extends ArrayAdapter {
 
     public int resourseId;
     public Activity context;
-    public ArrayList<BuyMenuListItem> object;
+    public ArrayList<ProductMenuListItem> object;
 
 
-    public BuyMenuAdapter(@NonNull Activity context, int resource, @NonNull ArrayList objects) {
+    public ProductMenuAdapter(@NonNull Activity context, int resource, @NonNull ArrayList objects) {
         super(context, resource, objects);
 
         this.resourseId = resource;
@@ -35,12 +35,12 @@ public class BuyMenuAdapter extends ArrayAdapter {
         View view = convertView;
         view = this.context.getLayoutInflater().inflate(this.resourseId,null);
 
-        ImageView img = view.findViewById(R.id.img_Menu_List);
-        TextView txtTitle = view.findViewById(R.id.txt_Title_Menu);
 
-        BuyMenuListItem buyMenuListItem = object.get(position);
-        txtTitle.setText(buyMenuListItem.title);
-        img.setImageResource(buyMenuListItem.img);
+        TextView txtTitle = view.findViewById(R.id.product_Title_Menu);
+
+        ProductMenuListItem productMenuListItem = object.get(position);
+        txtTitle.setText(productMenuListItem.title);
+
         return view;
     }
 }

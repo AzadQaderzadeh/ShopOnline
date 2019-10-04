@@ -24,8 +24,8 @@
             android:id="@+id/img_Menu_List"
             android:layout_marginRight="16dp"
             android:src="@drawable/basket"
-            android:layout_width="48dp"
-            android:layout_height="48dp"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"/>
 
 
     </LinearLayout>

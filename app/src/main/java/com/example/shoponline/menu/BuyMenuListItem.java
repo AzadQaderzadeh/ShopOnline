@@ -1,4 +1,4 @@
-package com.example.shoponline;
+package com.example.shoponline.menu;
 
 
 public class BuyMenuListItem {
