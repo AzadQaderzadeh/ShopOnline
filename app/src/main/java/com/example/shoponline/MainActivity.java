@@ -1,11 +1,13 @@
 package com.example.shoponline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import com.example.shoponline.menu.ProductMenuAdapter;
 import com.example.shoponline.menu.ProductMenuListItem;
 import com.example.shoponline.menu.SettingMenuAdapter;
 import com.example.shoponline.menu.SettingMenuListItem;
+import com.example.shoponline.signup.UserSignUp;
 
 import java.util.ArrayList;
 
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
     private ListView navigation_listView;
     private ListView product_listView;
     private ListView setting_listView;
-    private String drawerMenuList;
+    private TextView txtSignUp;
 
     //  private String [] menues = {"منو","ثبت نام","سبد خرید"};
     ArrayList<BuyMenuListItem> buyItems;
@@ -56,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         navigation_listView = findViewById(R.id.navigation_listView);
         product_listView = findViewById(R.id.product_listView);
         setting_listView = findViewById(R.id.setting_listView);
+        txtSignUp = findViewById(R.id.txt_SingUp);
+        txtSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(G.context, UserSignUp.class));
+            }
+        });
 
         //
         buyItems = new ArrayList<>();
