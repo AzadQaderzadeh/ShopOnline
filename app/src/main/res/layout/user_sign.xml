@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/toolbar"/>
+
+
+    <LinearLayout
+
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.9"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        android:layout_height="0dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:hint="‍‍پست الکترونیکی"
+                android:drawableRight="@drawable/email"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:drawablePadding="16dp"
+                android:id="@+id/edtEmail"
+                android:layout_height="wrap_content" />
+
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:hint="کلمه عبور"
+                android:layout_marginLeft="24dp"
+                android:drawablePadding="24dp"
+                android:layout_marginRight="16dp"
+                android:drawableRight="@drawable/smallbasket"
+                android:id="@+id/edtPass"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="نمایش کلمه عبور"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_marginRight="24dp"
+                android:layout_width="wrap_content"
+                android:id="@+id/showPass"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="48dp"
+            android:id="@+id/forgetPass"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:text="رمز عبورم را فراموش کرده ام!"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:password="false"
+                android:phoneNumber="false" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="48dp"
+            android:id="@+id/signUp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:textColor="#3eb502"
+                android:text="ثبت نام در دیجی کالا"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtSingUp" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0.1"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="#301FFF"
+        android:layout_height="0dp"
+        android:id="@+id/btnGo">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/go"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="#ffffff"
+            android:text="ورود به دیجی کالا"
+            android:layout_marginLeft="16dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -23,7 +23,7 @@ import com.example.shoponline.menu.ProductMenuAdapter;
 import com.example.shoponline.menu.ProductMenuListItem;
 import com.example.shoponline.menu.SettingMenuAdapter;
 import com.example.shoponline.menu.SettingMenuListItem;
-import com.example.shoponline.signup.UserSignUp;
+import com.example.shoponline.sign.ActivityUserSignIn;
 
 import java.util.ArrayList;
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(G.context, UserSignUp.class));
+                startActivity(new Intent(G.context, ActivityUserSignIn.class));
             }
         });
 
