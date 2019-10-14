@@ -1,7 +1,10 @@
 package com.example.shoponline;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -30,16 +34,22 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private LinearLayout linearShowAllProduct;
+    private LinearLayout userEmail;
     private SliderLayout sliderShow;
     private ArrayList<String> urlPict;
     private ArrayList<String> name;
+
+    public static SharedPreferences preferences;
+
 
     private ImageView menu_app;
     private DrawerLayout drawerLayout;
     private ListView navigation_listView;
     private ListView product_listView;
     private ListView setting_listView;
-    private TextView txtSignUp;
+    private TextView txtSignIn;
+    private TextView txtBasketCount;
+    private TextView txtExit;
 
     //  private String [] menues = {"منو","ثبت نام","سبد خرید"};
     ArrayList<BuyMenuListItem> buyItems;
@@ -48,9 +58,26 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String email = bundle.getString("email");
+            txtSignIn.setText(email);
+
+            preferences = PreferenceManager.getDefaultSharedPreferences(G.context);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("email", email);
+            editor.apply();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_menu);
+
 
         sliderShow = findViewById(R.id.slider);
         linearShowAllProduct = findViewById(R.id.linearShowAllProduct);
@@ -59,14 +86,59 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         navigation_listView = findViewById(R.id.navigation_listView);
         product_listView = findViewById(R.id.product_listView);
         setting_listView = findViewById(R.id.setting_listView);
-        txtSignUp = findViewById(R.id.txt_SingUp);
-        txtSignUp.setOnClickListener(new View.OnClickListener() {
+        userEmail = findViewById(R.id.user_Email);
+        txtExit = findViewById(R.id.exit);
+        txtSignIn = findViewById(R.id.txt_Sing_in);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(G.context);
+        String email = preferences.getString("email", "ورود/ثبت نام");
+
+        if (email.equals("")) {
+
+            txtSignIn.setText("ورود/ثبت نام");
+
+        } else {
+            txtSignIn.setText(email);
+        }
+
+
+        txtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(G.context, ActivityUserSignIn.class));
+
+                if (txtSignIn.getText().toString().equals("ورود/ثبت نام")) {
+
+                    Intent intent = new Intent(G.context, ActivityUserSignIn.class);
+                    startActivityForResult(intent, 0);
+
+
+                } else {
+
+                    if (userEmail.getVisibility() == View.VISIBLE) {
+                        userEmail.setVisibility(View.GONE);
+
+                    } else {
+                        userEmail.setVisibility(View.VISIBLE);
+                    }
+
+                }
+
             }
         });
 
+        txtExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferences = PreferenceManager.getDefaultSharedPreferences(G.context);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("email", "");
+                editor.putString("do", "");
+                editor.apply();
+                drawerLayout.closeDrawer(Gravity.RIGHT);
+
+
+            }
+        });
         //
         buyItems = new ArrayList<>();
 
@@ -95,8 +167,27 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         //
 
         menu_app.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RtlHardcoded")
             @Override
             public void onClick(View v) {
+                preferences= PreferenceManager.getDefaultSharedPreferences(G.context);
+                String email=preferences.getString("email","ورود/ثبت نام");
+                String insertDone=preferences.getString("do","");
+
+                if(email.equals("")){
+
+                    if(insertDone.equals("")){
+                        txtSignIn.setText("ورود/ثبت نام");
+                    }else{
+
+                        txtSignIn.setText(insertDone);
+                    }
+
+                }else{
+                    txtSignIn.setText(email);
+                }
+
+                userEmail.setVisibility(View.GONE);
                 drawerLayout.openDrawer(Gravity.RIGHT);
             }
         });

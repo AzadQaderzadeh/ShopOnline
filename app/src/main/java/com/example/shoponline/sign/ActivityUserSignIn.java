@@ -1,5 +1,6 @@
 package com.example.shoponline.sign;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -15,8 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoponline.G;
+import com.example.shoponline.MainActivity;
 import com.example.shoponline.R;
 import com.example.shoponline.connect.AsyncTaskConnect;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ActivityUserSignIn extends AppCompatActivity {
@@ -33,6 +38,8 @@ public class ActivityUserSignIn extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.user_sign);
         super.onCreate(savedInstanceState);
+
+
         showPass = findViewById(R.id.showPass);
 
         edtEmail = findViewById(R.id.edtEmail);
@@ -45,10 +52,45 @@ public class ActivityUserSignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                new AsyncTaskConnect("192.168.1.3/digikala/").execute();
+                String email=edtEmail.getText().toString();
+                String pass=edtPass.getText().toString();
+                new AsyncTaskConnect("http://192.168.1.5/digikala/",email,pass).execute();
 
                 Toast.makeText(G.context,data,Toast.LENGTH_LONG).show();
-               // Log.i("LOG",data);
+
+                final ProgressDialog dialog = new ProgressDialog(ActivityUserSignIn.this);
+                dialog.setMessage("لطفا منتظر بمانید...");
+                dialog.show();
+
+                final Timer timer = new Timer();
+                timer.scheduleAtFixedRate(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(!data.equals("")){
+
+                                    dialog.cancel();
+                                    if(data.equals("not exist")){
+                                        Toast.makeText(G.context,"پست الکترونیکی یا کلمه عبور اشتباه است",Toast.LENGTH_SHORT).show();
+                                        timer.cancel();
+
+                                    }else{
+                                        Intent intent=new Intent(G.context,MainActivity.class);
+                                        intent.putExtra("email",data);
+                                        setResult(RESULT_OK,intent);
+                                        timer.cancel();
+                                        finish();
+                                    }
+
+                                }
+                            }
+                        });
+                    }
+                },1,1000);
+
+
             }
         });
 

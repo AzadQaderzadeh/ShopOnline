@@ -1,8 +1,9 @@
 package com.example.shoponline.connect;
 
+
 import android.os.AsyncTask;
 
-import com.example.shoponline.sign.ActivityUserSignIn;
+import com.example.shoponline.sign.ActivityUserSignUp;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,26 +12,30 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-public class AsyncTaskConnect extends AsyncTask {
-
-
-    public String link = "";
+public class AsyncTaskInsertUser extends AsyncTask {
+    public String link="";
     public String email;
     public String pass;
 
-    public AsyncTaskConnect(String link, String email, String pass) {
-        this.link = link;
-        this.email = email;
-        this.pass = pass;
+    public AsyncTaskInsertUser(String link,String email,String pass){
+
+        this.link=link;
+        this.email=email;
+        this.pass=pass;
+
     }
 
+
+
+
     @Override
-    protected Object doInBackground(Object[] objects) {
+    protected Object doInBackground(Object[] params) {
+
         try{
 
 
 
-            String data=URLEncoder.encode("email","UTF8")+"="+URLEncoder.encode(email,"UTF8");
+            String data= URLEncoder.encode("email","UTF8")+"="+URLEncoder.encode(email,"UTF8");
             data+="&"+URLEncoder.encode("pass","UTF8")+"="+URLEncoder.encode(pass,"UTF8");
 
             URL url=new URL(link);
@@ -54,11 +59,13 @@ public class AsyncTaskConnect extends AsyncTask {
 
             }
 
-            ActivityUserSignIn.data=builder.toString();
+//            ActivityUserSignUp.data=builder.toString();
 
         }catch (Exception e){
 
         }
         return "";
     }
+
+
 }
