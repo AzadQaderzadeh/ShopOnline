@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
             preferences = PreferenceManager.getDefaultSharedPreferences(G.context);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString("email", email);
-            editor.apply();
+            editor.commit();
         }
     }
 
@@ -127,13 +127,14 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         });
 
         txtExit.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RtlHardcoded")
             @Override
             public void onClick(View v) {
                 preferences = PreferenceManager.getDefaultSharedPreferences(G.context);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("email", "");
                 editor.putString("do", "");
-                editor.apply();
+                editor.commit();
                 drawerLayout.closeDrawer(Gravity.RIGHT);
 
 
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         //
 
         menu_app.setOnClickListener(new View.OnClickListener() {
+
             @SuppressLint("RtlHardcoded")
             @Override
             public void onClick(View v) {

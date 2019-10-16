@@ -2,9 +2,10 @@ package com.example.shoponline.sign;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -12,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoponline.G;
@@ -27,36 +27,54 @@ import java.util.TimerTask;
 public class ActivityUserSignIn extends AppCompatActivity {
 
     CheckBox showPass;
-    public static String data = " ";
+    public static String data = "";
     EditText edtEmail;
     EditText edtPass;
-    //test btnGo
     LinearLayout btnGo;
     TextView txtSignUp;
+    SharedPreferences preferences;
+
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String insertDone = bundle.getString("do");
+
+            preferences = PreferenceManager.getDefaultSharedPreferences(G.context);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("do", insertDone);
+            editor.commit();
+
+            Intent intent = new Intent(G.context, MainActivity.class);
+            startActivity(intent);
+
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.user_sign);
         super.onCreate(savedInstanceState);
 
 
-        showPass = findViewById(R.id.showPass);
+        showPass = (CheckBox) findViewById(R.id.showPass);
+        btnGo = (LinearLayout) findViewById(R.id.btnGo);
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtPass = (EditText) findViewById(R.id.edtPass);
+        txtSignUp = (TextView) findViewById(R.id.txtSingUp);
 
-        edtEmail = findViewById(R.id.edtEmail);
-        edtPass = findViewById(R.id.edtPass);
-        txtSignUp = findViewById(R.id.txtSingUp);
 
-        // test btnGo
-        btnGo = findViewById(R.id.btnGo);
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String email = edtEmail.getText().toString();
+                String pass = edtPass.getText().toString();
 
-                String email=edtEmail.getText().toString();
-                String pass=edtPass.getText().toString();
-                new AsyncTaskConnect("http://192.168.1.5/digikala/",email,pass).execute();
+                new AsyncTaskConnect("http://192.168.1.2/digikala/", email, pass).execute();
 
-                Toast.makeText(G.context,data,Toast.LENGTH_LONG).show();
 
                 final ProgressDialog dialog = new ProgressDialog(ActivityUserSignIn.this);
                 dialog.setMessage("لطفا منتظر بمانید...");
@@ -69,32 +87,32 @@ public class ActivityUserSignIn extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                if(!data.equals("")){
+                                if (!data.equals("")) {
 
                                     dialog.cancel();
-                                    if(data.equals("not exist")){
-                                        Toast.makeText(G.context,"پست الکترونیکی یا کلمه عبور اشتباه است",Toast.LENGTH_SHORT).show();
+                                    if (data.equals("not exist")) {
+                                        Toast.makeText(G.context, "پست الکترونیکی یا کلمه عبور اشتباه است", Toast.LENGTH_SHORT).show();
                                         timer.cancel();
 
-                                    }else{
-                                        Intent intent=new Intent(G.context,MainActivity.class);
-                                        intent.putExtra("email",data);
-                                        setResult(RESULT_OK,intent);
+                                    } else {
+                                        Intent intent = new Intent(G.context, MainActivity.class);
+                                        intent.putExtra("email", data);
+                                        setResult(RESULT_OK, intent);
                                         timer.cancel();
                                         finish();
                                     }
 
                                 }
+
                             }
                         });
                     }
-                },1,1000);
+                }, 1, 1000);
 
 
             }
         });
 
-        //
 
         showPass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,11 +131,11 @@ public class ActivityUserSignIn extends AppCompatActivity {
         txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(G.context,ActivityUserSignUp.class));
-
-//                Intent intent=new Intent(G.context,ActivityUserSignUp.class);
-//                startActivityForResult(intent,0);
+                Intent intent = new Intent(G.context, ActivityUserSignUp.class);
+                startActivityForResult(intent, 0);
             }
         });
+
+
     }
 }
