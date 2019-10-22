@@ -60,11 +60,11 @@ public class ActivityUserSignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        showPass = (CheckBox) findViewById(R.id.showPass);
-        btnGo = (LinearLayout) findViewById(R.id.btnGo);
-        edtEmail = (EditText) findViewById(R.id.edtEmail);
-        edtPass = (EditText) findViewById(R.id.edtPass);
-        txtSignUp = (TextView) findViewById(R.id.txtSingUp);
+        showPass = findViewById(R.id.showPass);
+        btnGo = findViewById(R.id.btnGo);
+        edtEmail = findViewById(R.id.edtEmail);
+        edtPass = findViewById(R.id.edtPass);
+        txtSignUp = findViewById(R.id.txtSingUp);
 
 
         btnGo.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +73,7 @@ public class ActivityUserSignIn extends AppCompatActivity {
                 String email = edtEmail.getText().toString();
                 String pass = edtPass.getText().toString();
 
+                // ToDo One Other ip config localhost
                 new AsyncTaskConnect("http://192.168.1.2/digikala/", email, pass).execute();
 
 

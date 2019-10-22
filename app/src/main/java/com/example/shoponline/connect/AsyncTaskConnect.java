@@ -25,7 +25,7 @@ public class AsyncTaskConnect extends AsyncTask {
     }
 
     @Override
-    protected Object doInBackground(Object[] objects) {
+    protected Object doInBackground(Object[] params) {
         try{
 
 

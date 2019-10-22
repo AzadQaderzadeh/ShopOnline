@@ -15,4 +15,25 @@
         <item name="colorAccent">@color/activityUserSignIn</item>
     </style>
 
+    <style name="ActivitySplash" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/activitySplashAccent</item>
+    </style>
+
+    <style name="ActivityShow" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/activityShowPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/activityShowPrimary</item>
+    </style>
+
+    <style name="ActivityWait" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/activitySplashAccent</item>
+        <item name="colorPrimaryDark">@color/activitySplashAccent</item>
+        <item name="colorAccent">@color/activityWaitAccent</item>
+    </style>
+
 </resources>

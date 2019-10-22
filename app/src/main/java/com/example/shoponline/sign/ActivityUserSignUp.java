@@ -31,11 +31,11 @@ public class ActivityUserSignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        edtEmail = (EditText) findViewById(R.id.edtEmail);
-        edtPass = (EditText) findViewById(R.id.edtPass);
-        edtRePass = (EditText) findViewById(R.id.edtRePass);
+        edtEmail = findViewById(R.id.edtEmail);
+        edtPass = findViewById(R.id.edtPass);
+        edtRePass = findViewById(R.id.edtRePass);
 
-        linearSignUp = (LinearLayout) findViewById(R.id.LinearSignUp);
+        linearSignUp = findViewById(R.id.LinearSignUp);
         linearSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +45,7 @@ public class ActivityUserSignUp extends AppCompatActivity {
 
                 if (pass.equals(rePass)) {
 
+                    // ToDo Two Other ip config localhost
                     new AsyncTaskInsertUser("http://192.168.1.2/digikala/insertuser.php", email, pass).execute();
 
                     final ProgressDialog dialog = new ProgressDialog(ActivityUserSignUp.this);
